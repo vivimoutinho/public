@@ -1,0 +1,10 @@
+Explicação do Script
+@echo off: Oculta os comandos enquanto o script é executado.
+set "downloadURL=...": Define a URL de download do instalador do Google Chrome.
+set "installerPath=...": Define o caminho temporário onde o instalador será salvo.
+powershell -Command "Invoke-WebRequest -Uri %downloadURL% -OutFile %installerPath%": Usa o PowerShell para baixar o instalador.
+if %ERRORLEVEL% NEQ 0: Verifica se houve algum erro ao baixar o instalador.
+%installerPath% /silent /install: Executa o instalador de forma silenciosa (sem intervenção do usuário).
+del %installerPath%: Remove o instalador baixado após a instalação.
+echo Instalacao concluida com sucesso!: Mensagem indicando que a instalação foi concluída.
+pause: Mantém a janela do console aberta para que você possa ver o resultado.

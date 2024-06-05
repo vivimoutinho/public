@@ -1,0 +1,14 @@
+Explicação do Script
+@echo off: Oculta os comandos enquanto o script é executado.
+set "source=\\servidor_origem\pasta": Define o caminho de origem dos arquivos.
+set "destination=\\servidor_destino\pasta": Define o caminho de destino para onde os arquivos serão copiados.
+set "logfile=C:\caminho\para\log\robocopy.log": Define o caminho e o nome do arquivo de log.
+set "options=/MIR /R:5 /W:10 /LOG:%logfile% /NP /TEE": Define as opções do Robocopy:
+/MIR: Espelha a árvore de diretórios (copia subdiretórios, incluindo vazios e exclui no destino os arquivos e diretórios que foram excluídos na origem).
+/R:5: Tenta 5 vezes em caso de falha.
+/W:10: Espera 10 segundos entre tentativas.
+/LOG:%logfile%: Salva o log no arquivo especificado.
+/NP: Não exibe a porcentagem copiada.
+/TEE: Mostra a saída no console e no log.
+if %ERRORLEVEL% GEQ 8: Verifica se houve algum erro na execução do Robocopy (códigos de erro maiores ou iguais a 8 indicam falha).
+pause: Mantém a janela do console aberta para que você possa ver o resultado.
