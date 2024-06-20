@@ -1,0 +1,43 @@
+Explicação do Script
+Listas de Servidores:
+
+$serversToEnable contém os nomes dos servidores onde a tarefa será habilitada.
+$serversToDisable contém os nomes dos servidores onde a tarefa será desabilitada.
+Nome da Tarefa:
+
+$taskName é o nome da tarefa agendada que será habilitada ou desabilitada.
+Função Enable-ScheduledTask:
+
+Usa Invoke-Command para executar o comando remotamente.
+Habilita a tarefa agendada no servidor especificado.
+Verifica se a tarefa existe antes de tentar habilitá-la.
+Função Disable-ScheduledTask:
+
+Usa Invoke-Command para executar o comando remotamente.
+Desabilita a tarefa agendada no servidor especificado.
+Verifica se a tarefa existe antes de tentar desabilitá-la.
+Execução das Funções:
+
+Itera sobre os servidores na lista $serversToEnable e chama Enable-ScheduledTask para cada um.
+Itera sobre os servidores na lista $serversToDisable e chama Disable-ScheduledTask para cada um.
+Agendamento do Script
+Para agendar este script para execução pelo Task Scheduler do Windows, siga os passos abaixo:
+
+Salvar o Script:
+
+Salve o script em um arquivo com a extensão .ps1, por exemplo, GerenciarTarefas.ps1.
+Criar uma Tarefa Agendada:
+
+Abra o Task Scheduler (Agendador de Tarefas).
+Clique em "Create Task" (Criar Tarefa).
+Na aba "General" (Geral), forneça um nome e uma descrição para a tarefa.
+Na aba "Triggers" (Gatilhos), configure quando a tarefa deve ser executada.
+Na aba "Actions" (Ações), clique em "New" (Novo) e configure da seguinte forma:
+Action: "Start a program" (Iniciar um programa).
+Program/script: powershell.exe
+Add arguments (optional): -File "C:\Caminho\Para\GerenciarTarefas.ps1"
+Configurações Adicionais:
+
+Na aba "Conditions" (Condições), desmarque a opção "Start the task only if the computer is on AC power" (Iniciar a tarefa somente se o computador estiver conectado à alimentação).
+Na aba "Settings" (Configurações), marque a opção "Allow task to be run on demand" (Permitir que a tarefa seja executada sob demanda).
+Agora, a tarefa está configurada para executar o script conforme programado.
